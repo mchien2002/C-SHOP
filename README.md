@@ -8,5 +8,5 @@ Creating Super User vs Admin Site
 Creating Product Model
 Creating Product From Admin Site
 
-minh chien
-wcccc
+23/03/2022:
+Creating Category Model
