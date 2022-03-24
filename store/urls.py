@@ -14,10 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import path
+from .views import index
+# Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # dòng lệnh dưới sẽ đi đến file store.urls -> index trong view -> thực hiện hàm trong view.py
-    path('', include('store.urls'))
+    path('', index)
 ]

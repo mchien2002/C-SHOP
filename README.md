@@ -8,5 +8,10 @@ Creating Super User vs Admin Site
 Creating Product Model
 Creating Product From Admin Site
 
-23/03/2022:
+23/03/2022: CHIEN
 Creating Category Model
+
+24/03/2022: CHIEN
+Foreign Key - Product - Category
+Showing Table View In Admin Site
+Handling Request
