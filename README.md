@@ -17,3 +17,8 @@ Showing Table View In Admin Site
 Handling Request
 Serving Html Files
 Getting Products
+
+24/03/2022: NHUT
+Adding Bootstrap
+Loading Images
+Adding Navbar
