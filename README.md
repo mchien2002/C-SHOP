@@ -15,3 +15,5 @@ Creating Category Model
 Foreign Key - Product - Category
 Showing Table View In Admin Site
 Handling Request
+Serving Html Files
+Getting Products

@@ -6,8 +6,7 @@ from .models.category import Category
 
 # hiện thị thông tin sản phẩm để admin dễ thao tác
 class AdminProduct(admin.ModelAdmin):
-    list_display = ['name', 'price', 'category']
-
+    list_display = ['name', 'price', 'category', 'thuonghieu']
 # hiển thị thông tin của danh mục sản phẩm
 class AdminCategory(admin.ModelAdmin):
     list_display = ['name']
