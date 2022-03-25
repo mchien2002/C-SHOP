@@ -22,3 +22,7 @@ Getting Products
 Adding Bootstrap
 Loading Images
 Adding Navbar
+
+25/03/2022: HOANG
+Extending Html
+Listing Category In Home Page
