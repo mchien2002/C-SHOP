@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import index
-# Tạo đường dẫn URL để xử lý yêu cầu
+# CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
     path('', index)
 ]
