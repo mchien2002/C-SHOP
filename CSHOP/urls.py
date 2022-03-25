@@ -20,7 +20,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # dòng lệnh dưới sẽ đi đến file store.urls -> index trong view -> thực hiện hàm trong view.py
+    # CHIEN : dòng lệnh dưới sẽ đi đến file store.urls -> index trong view -> thực hiện hàm trong view.py
     path('', include('store.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #NHUT: dòng trên set 2 giá trị MEDIA_URL và MEDIA_ROOT để Upload file lên Django
