@@ -7,7 +7,7 @@
     <title>C-SHOP</title>
 </head>
 <body>
-   <!-- navbar -->
+   <!-- NHUT: tạo giao diện bootstrap navbar -->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">C-SHOP</a>
@@ -41,9 +41,11 @@
 </nav>
    <!--body-->
     <div class="container-fluid mt-3">
+        <!--NHUT: chỉnh sửa giao diện để các product được liệt kê theo hàng-->
         <div class="row mx-auto">
             {% for product in products %}
             <div class="card mx-auto mb-3" style="width: 18rem;">
+                <!--NHUT: Upload ảnh và các thông tin cơ bản về product-->
             <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
              <div class="card-body">
                  <p class="card-title">{{product.name}}</p>
