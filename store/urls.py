@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index
+from .views import index , signup
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
-    path('', index)
+    path('', index),
+    path('signup' , signup)
 ]

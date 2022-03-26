@@ -26,5 +26,14 @@ Adding Navbar
 25/03/2022: HOANG
 Extending Html
 Listing Category In Home Page
+
 26/03/2022: HOANG
 Filter By Category
+
+26/03/2022: DANG
+Serving Signup Page
+Design Signup From
+Creating Customer Model
+Submitting from
+Creating a Customer
+Form Validations

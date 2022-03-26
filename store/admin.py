@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models.product import Product
 from .models.category import Category
+from .models.customer import Customer
 # Register your models here.
 
 
@@ -16,3 +17,6 @@ admin.site.register(Product, AdminProduct)
 
 # CHIEN: tạo site Category cho admin
 admin.site.register(Category, AdminCategory)
+
+#DANG: Tạo tài khoản Khách Hàng
+admin.site.register(Customer)
