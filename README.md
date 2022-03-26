@@ -26,3 +26,5 @@ Adding Navbar
 25/03/2022: HOANG
 Extending Html
 Listing Category In Home Page
+26/03/2022 HOANG
+Filter By Category
