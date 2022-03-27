@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index , signup
+from .views import index , signup ,login
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
     path('', index,name='homepage'),
-    path('signup' , signup)
+    path('signup' , signup),
+    #HOANG: thêm đường dẫn login
+    path('login', login)
 ]
