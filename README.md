@@ -41,3 +41,6 @@ Form Validations
 Redirecting To Home Page
 Email validation
 Password Hashing
+Refactoring Code
+Login Page
+Customer login
