@@ -44,3 +44,4 @@ Password Hashing
 Refactoring Code
 Login Page
 Customer login
+Add Category: Shoes and upload some products
