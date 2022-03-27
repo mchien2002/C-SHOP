@@ -18,6 +18,6 @@ from django.urls import path
 from .views import index , signup
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
-    path('', index),
+    path('', index,name='homepage'),
     path('signup' , signup)
 ]

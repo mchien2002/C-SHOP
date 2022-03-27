@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password, check_password
 from .models.product import Product
 from store.models import product
 from .models.category import Category
-from  .models.customer import Customer
+from .models.customer import Customer
+
+
 # Create your views here.
 
 def index(request):
@@ -19,10 +22,12 @@ def index(request):
     data['products'] = products
     data['categories'] = categories
     return render(request, 'index.html', data)
+
+
 # DANG - lấy dữ liệu nhập vào khi tạo tài khoản
 def signup(request):
     if request.method == 'GET':
-        return render(request,'signup.html')
+        return render(request, 'signup.html')
     else:
         postData = request.POST
         first_name = postData.get('firstname')
@@ -30,34 +35,47 @@ def signup(request):
         phone = postData.get('phone')
         email = postData.get('email')
         password = postData.get('password')
-        #validation
+        # validation
+        value = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'phone': phone,
+            'email': email
+        }
         error_message = None
-        if(not first_name  ):
+        customer = Customer(first_name=first_name,
+                            last_name=last_name,
+                            phone=phone, email=email,
+                            password=password)
+
+        if (not first_name):
             error_message = "First Name Required !!"
         elif len(first_name) < 1:
             error_message = 'First Name must be 4 char long or more'
         elif not last_name:
             error_message = 'Last Name Required'
-        elif len(last_name)<1:
+        elif len(last_name) < 1:
             error_message = 'Last Name must be 4 char long or more'
         elif not phone:
             error_message = 'Phone Number Required'
-        elif len(phone)<10:
-            error_message='Phone Number must be 10 char Long'
-        elif len(password)<6:
+        elif len(phone) < 10:
+            error_message = 'Phone Number must be 10 char Long'
+        elif len(password) < 6:
             error_message = 'Password must be 6 char long'
-        elif len(email)<5:
+        elif len(email) < 5:
             error_message = 'Email must be 5 char long'
+        elif customer.isExists():
+            error_message = 'Email Address Already Registered..'
 
-
-
-        #saving
+        # saving
         if not error_message:
-            print(first_name,last_name,phone,email,password)
-            customer = Customer(first_name=first_name,
-                                last_name=last_name,
-                                phone=phone,email=email,
-                                password=password)
+            print(first_name, last_name, phone, email, password)
+            customer.password = make_password(customer.password)
             customer.register()
+            return redirect('homepage')
         else:
-            return render(request,'signup.html',{'error' : error_message})
+            data = {
+                'error': error_message,
+                'values': value
+            }
+            return render(request, 'signup.html', data)
