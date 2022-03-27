@@ -37,6 +37,7 @@ Creating Customer Model
 Submitting from
 Creating a Customer
 Form Validations
+
 27/03/2022: HOANG 
 Redirecting To Home Page
 Email validation
