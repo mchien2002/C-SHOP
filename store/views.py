@@ -40,6 +40,8 @@ def validateCustomer(customer):
         error_message = 'Phone Number must be 10 char Long'
     elif len(customer.password) < 6:
         error_message = 'Password must be 6 char long'
+    elif customer.password == -1:
+        error_message = 'Re-enter passwowrd is incorrect'
     elif len(customer.email) < 5:
         error_message = 'Email must be 5 char long'
     elif customer.isExists():
@@ -52,7 +54,10 @@ def registerUser(request):
     last_name = postData.get('lastname')
     phone = postData.get('phone')
     email = postData.get('email')
-    password = postData.get('password')
+    if postData.get('password_check') == postData.get('password'):
+        password = postData.get('password')
+    else:
+        password = -1
     # validation
     value = {
         'first_name': first_name,

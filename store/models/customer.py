@@ -7,6 +7,7 @@ class Customer(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=500)
 
+    # CHIEN: Lưu lên database
     def register(self):
         self.save()
 
@@ -16,7 +17,7 @@ class Customer(models.Model):
             return Customer.objects.get(email = email)
         except:
             return False
-
+    # Kiểm tra email có tồn tại không
     def isExists(self):
         if Customer.objects.filter(email = self.email):
             return True
