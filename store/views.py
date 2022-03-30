@@ -1,3 +1,4 @@
+from operator import ge
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
@@ -11,13 +12,13 @@ from .models.customer import Customer
 
 def index(request):
     products = None
-    # CHIEN: tạo list danh sách các product trong database
     categories = Category.get_all_categories()
     categoryID = request.GET.get('category')
     if categoryID:
         products = Product.get_all_products_by_categoryid(categoryID)
     else:
-        products = Product.get_all_products();
+        products = Product.get_all_products()
+    # CHIEN: TẠO THƯ VIỆN DATA RỒI TRUYỀN DỮ LIỆU CỦA PRODUCT VS CATEGORY CHO INDEX.HTML XỬ LÝ
     data = {}
     data['products'] = products
     data['categories'] = categories

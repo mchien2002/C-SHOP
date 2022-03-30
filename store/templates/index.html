@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +11,6 @@
     <title>C-SHOP</title>
 </head>
 <body>
-   <!-- NHUT: tạo giao diện bootstrap navbar -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">C-SHOP</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Store</a>
-        </li>
 
 {% block content %}
 
@@ -31,15 +18,14 @@
 <div class="container-fluid mt-3">
     <div class="row">
     <!--filter -->
-    <div class="col-lg-2 mx-auto">
-        <div class="list-group">
-            <a href="/" class="list-group-item list-group-item-action">All</a>
-            {% for category in categories %}
-
-            <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>
-            {% endfor %}
+        <div class="col-lg-2 mx-auto">
+            <div class="list-group">
+                <a href="/" class="list-group-item list-group-item-action">All</a>
+                {% for category in categories %}
+                    <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
         <div id='products' class="col-lg-9 mx-auto">
             <div class="row mx-auto">
                 {% for product in products %}
@@ -57,7 +43,6 @@
     </div>
 </div>
 {% endblock %}
-=======
 
 </body>
 </html>
