@@ -48,3 +48,9 @@ Refactoring Code
 Login Page
 Customer login
 Add Category: Shoes and upload some products
+
+28,29,30/03/2022: CHIEN
+Fix bug and UPdate
+
+1/04/2022: CHIEN
+Class Based View

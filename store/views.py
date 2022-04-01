@@ -1,12 +1,14 @@
 from operator import ge
+from django import views
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
+from django.urls import register_converter
 from .models.product import Product
 from store.models import product
 from .models.category import Category
 from .models.customer import Customer
-
+from django.views import View
 
 # Create your views here.
 
@@ -75,6 +77,8 @@ def registerUser(request):
     # saving
     if not error_message:
         print(first_name, last_name, phone, email, password)
+        
+        # Hashing passWord
         customer.password = make_password(customer.password)
         customer.register()
         return redirect('homepage')
@@ -90,13 +94,18 @@ def registerUser(request):
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html')
+
+    # Nếu bấm nút đăng ký
     else:
         return registerUser(request)
-#HOANG: hàm yêu cầu đăng nhập
-def login(request):
-    if request.method == 'GET':
+        
+# CHIEN: Class base View
+class Login(View):
+
+    def get(self, request):
         return render(request, 'login.html')
-    else:
+
+    def post(self, request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         customer = Customer.get_customer_by_email(email)
@@ -112,3 +121,5 @@ def login(request):
         print(customer)
         print(email,password)
         return render(request, 'login.html', {'error': error_message})
+        
+

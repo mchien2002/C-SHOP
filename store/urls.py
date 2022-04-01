@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index , signup ,login
+from .views import index , signup ,Login
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
-    path('', index,name='homepage'),
+    path('', index, name='homepage'),
     path('signup' , signup),
     #HOANG: thêm đường dẫn login
-    path('login', login)
+    # CHIEN: as_view()phương thức lớp trả về một hàm có thể được gọi khi một yêu cầu đến cho một URL khớp với mẫu được liên kết.
+    path('login', Login.as_view())
 ]
