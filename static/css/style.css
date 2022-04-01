@@ -1,0 +1,27 @@
+.card:hover{
+    animation: moveAniHover .2s;
+    transform: translateY(-2px);
+    cursor: pointer;
+    background-color: #ccc;
+    transform: translateY(-4px);
+
+}
+
+
+@keyframes moveAniHover {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes Opacity {
+    from{
+        opacity: 0.7;
+    }
+    to{
+        opacity: 1;
+    }
+}
