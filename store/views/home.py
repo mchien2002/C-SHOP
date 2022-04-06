@@ -11,7 +11,7 @@ from django.views import View
 class Index(View):
     def post(self, request):
         product = request.POST.get('product')
-        # CHIEN: THÊM SẢN PHẨM VÀO DỎ HÀNG
+        # CHIEN: Thêm sản phẩm vào dỏ hàng
         cart = request.session.get('cart')
         if cart:
             quanlity = cart.get(product)
@@ -34,7 +34,7 @@ class Index(View):
             products = Product.get_all_products_by_categoryid(categoryID)
         else:
             products = Product.get_all_products()
-        # CHIEN: TẠO THƯ VIỆN DATA RỒI TRUYỀN DỮ LIỆU CỦA PRODUCT VS CATEGORY CHO INDEX.HTML XỬ LÝ
+        # Chien: TẠO THƯ VIỆN DATA RỒI TRUYỀN DỮ LIỆU CỦA PRODUCT VS CATEGORY CHO INDEX.HTML XỬ LÝ
         data = {}
         data['products'] = products
         data['categories'] = categories
