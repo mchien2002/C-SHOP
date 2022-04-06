@@ -54,3 +54,11 @@ Fix bug and UPdate
 
 1/04/2022: CHIEN
 Class Based View
+
+---------------------------------------------------
+
+06/04/2022: CHIEN
+Session - Phiên đăng nhập
+Cart
+
+
