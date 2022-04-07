@@ -13,10 +13,18 @@ class Index(View):
         product = request.POST.get('product')
         # CHIEN: Thêm sản phẩm vào dỏ hàng
         cart = request.session.get('cart')
+        # NHUT: xóa bớt sản phẩm vào giỏ hàng
+        remove=request.POST.get('remove')
         if cart:
             quanlity = cart.get(product)
             if quanlity:
-                cart[product] = quanlity + 1
+                if remove:
+                    if quanlity<=1:
+                        cart.pop(product)
+                    else:
+                        cart[product] = quanlity - 1
+                else:
+                    cart[product] = quanlity + 1
             else:   
                 cart[product] = 1
         else:
@@ -29,7 +37,7 @@ class Index(View):
     def get(self, request):
         cart=request.session.get('cart')
         if not cart:
-            request.session.cart={}
+            request.session['cart']={}
         products = None
         categories = Category.get_all_categories()
         categoryID = request.GET.get('category')
