@@ -15,4 +15,14 @@ def is_in_cart(product, cart):
         
         if int(id) == product.id:
             return True
-    return False
+    return False;
+
+@register.filter(name = 'cart_quantity')
+def cart_quantity(product, cart):
+    # Hoang: đếm số lượng sản phẩm trong giỏ hàng
+    keys = cart.keys()
+    # Hoang: id là số lượng mua của từng product
+    for id in keys:
+        if int(id) == product.id:
+            return cart.get(id)
+    return 0;
