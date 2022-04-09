@@ -29,12 +29,12 @@
                             <div class="row no-gutters">
                                <form action="/" class="col-2" method="post">
                                     {% csrf_token %}
-                                <input hidden name='product' type="text" value=" {{product.id}} ">
+                                    <input hidden name='product' type="text" value=" {{product.id}} ">
                                    <input hidden name='remove' type="text" value="True">
-                                    <input type="submit" value=" - " class="btn btn-block btn-secondary" >
+                                    <input type="submit" value=" - " class="btn-fix-size btn btn-block btn-secondary" >
                                 </form>
                                 <div class="text-center col">{{product|cart_quantity:request.session.cart}} in Cart</div>
-                                <form action="/" class="col-2" method="post">
+                                <form action="/" class="col-2 d-table" method="post">
                                     {% csrf_token %}
                                 <input hidden name='product' type="text" value=" {{product.id}} ">
                                     <input type="submit" value=" + " class="btn btn-block btn-secondary" >
