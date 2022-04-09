@@ -21,6 +21,12 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='Unknown')
 
     # CHIEN: staticmethod không chịu ảnh hưởng bởi class, nó chỉ việc xử lý các tham số
+
+    @staticmethod
+    def get_products_by_id(ids):
+        return Product.objects.filter(id__in=ids)
+
+
     @staticmethod
     def get_all_products():
         return Product.objects.all()
