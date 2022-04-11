@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from .views.home import Index
 from .views.signup import Signup
-from .views.login import Login,logout
-from .views.cart import Cart
+from .views.login import Login
 
 
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
@@ -28,7 +27,5 @@ urlpatterns = [
 
     #HOANG: thêm đường dẫn login
     # CHIEN: as_view()phương thức lớp trả về một hàm có thể được gọi khi một yêu cầu đến cho một URL khớp với mẫu được liên kết.
-    path('login', Login.as_view(),name='login'),
-    path('logout',logout,name='logout'),
-    path('cart',Cart.as_view(),name='cart'),
+    path('login', Login.as_view())
 ]

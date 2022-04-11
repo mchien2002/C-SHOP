@@ -61,13 +61,4 @@ Class Based View
 Session - Phiên đăng nhập
 Cart
 
-07/04/2022: NHUT
-Cart Quantity Plus Minus
-Return to same product after adding to cart
-Showing and Hiding Navbar Links
 
-09/04/2022: NHUT
-Logout
-Fetching cart products 
-Showing Products in cart page
-Filter for currency 
