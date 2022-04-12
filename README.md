@@ -71,3 +71,8 @@ Logout
 Fetching cart products 
 Showing Products in cart page
 Filter for currency 
+
+---------------------------------------------------
+
+11/04/2022: DANG
+Place order 
