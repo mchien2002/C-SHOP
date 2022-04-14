@@ -82,3 +82,7 @@ Check out form
 
 14/04/2022: CHIEN
 Place Order 
+14/04/2022: HOANG
+Listing Orders
+Adding Order status
+Showing Cart Item Count In NavBar
