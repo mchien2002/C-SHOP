@@ -66,17 +66,19 @@ Cart Quantity Plus Minus
 Return to same product after adding to cart
 Showing and Hiding Navbar Links
 
+---------------------------------------------------
+
 09/04/2022: NHUT
 Logout
 Fetching cart products 
 Showing Products in cart page
 Filter for currency 
 
----------------------------------------------------
-
 11/04/2022: DANG
 Place order 
+
 13/04/2022:DANG + CHIEN
 Check out form
+
 14/04/2022: CHIEN
 Place Order 
