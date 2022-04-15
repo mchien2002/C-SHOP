@@ -90,3 +90,7 @@ Place Order
 Listing Orders
 Adding Order status
 Showing Cart Item Count In NavBar
+
+15/04/2002: DANG
+Middleware 
+Alternative way to activate middleware
