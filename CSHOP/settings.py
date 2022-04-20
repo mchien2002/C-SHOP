@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'static'),
 )
 #NHUT: tạo đường dẫn đến URL để xứ lý yêu cầu
 MEDIA_URL="/image/download/"
