@@ -22,3 +22,7 @@ class Order(models.Model):
             .objects\
             .filter(customer=customer_id)\
             .order_by('-date')
+
+    @staticmethod
+    def get_all_orders():
+        return Order.objects.all()

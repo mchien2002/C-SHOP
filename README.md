@@ -73,7 +73,7 @@ Showing and Hiding Navbar Links
 
 09/04/2022: NHUT
 Logout
-Fetching cart products 
+Fetching cart products
 Showing Products in cart page
 Filter for currency 
 
