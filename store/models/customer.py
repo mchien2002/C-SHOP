@@ -6,7 +6,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField()
     password = models.CharField(max_length=500)
-
+    mess_code = models.CharField(max_length=100)
     # CHIEN: Lưu lên database
     def register(self):
         self.save()
@@ -22,5 +22,7 @@ class Customer(models.Model):
         if Customer.objects.filter(email = self.email):
             return True
         return False
+    def get_all_customer(self):
+        return Customer.objects.all();
     
         

@@ -13,6 +13,8 @@ class Signup(View):
         last_name = postData.get('lastname')
         phone = postData.get('phone')
         email = postData.get('email')
+        mess_code = str(hash(email))
+
         if postData.get('password_check') == postData.get('password'):
             password = postData.get('password')
         else:
@@ -22,13 +24,14 @@ class Signup(View):
             'first_name': first_name,
             'last_name': last_name,
             'phone': phone,
-            'email': email
+            'email': email,
+            'mess_code': mess_code
         }
         error_message = None
         customer = Customer(first_name=first_name,
                             last_name=last_name,
                             phone=phone, email=email,
-                            password=password)
+                            password=password, mess_code=mess_code)
 
         error_message = self.validateCustomer(customer)
         # saving
@@ -46,7 +49,7 @@ class Signup(View):
             }
             return render(request, 'signup.html', data)
 
-    def validateCustomer(self,  customer):
+    def validateCustomer(self, customer):
         error_message = None
         if (not customer.first_name):
             error_message = "First Name Required !!"
@@ -69,3 +72,4 @@ class Signup(View):
         elif customer.isExists():
             error_message = 'Email Address Already Registered..'
         return error_message    
+    
