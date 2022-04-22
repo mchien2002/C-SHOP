@@ -42,7 +42,11 @@
                     <td><small class="badge badge-warning">Pending</small></td>
                     {% endif %}
                     <td>
-                        <div class="btn bg-danger text-white">Hủy đơn</div>
+                        <form action="/orders" method="post">
+                            {% csrf_token %}
+                            <input hidden type="text" name='remove' value='{{order.id}}'>
+                            <input type="submit" value="Hủy đơn này" class="btn bg-danger text-white">
+                        </form>
                     </td>
                 </tr>
 

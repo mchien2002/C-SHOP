@@ -14,7 +14,9 @@ class OrderView(View):
         customer = request.session.get('customer')
         orders = Order.get_orders_by_customer(customer)
         print(orders)
-
         return render(request, 'orders.html' ,{'orders' : orders})
-    
+    def post(self, request):
+        order = request.POST.get('remove')
+        Order.objects.filter(id = order).delete()
+        return redirect('orders')
    
