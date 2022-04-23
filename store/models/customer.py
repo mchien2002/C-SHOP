@@ -17,6 +17,12 @@ class Customer(models.Model):
             return Customer.objects.get(email = email)
         except:
             return False
+    @staticmethod
+    def get_customer_by_id(id):
+        try:
+            return Customer.objects.get(id = id)
+        except:
+            return False
     # Kiểm tra email có tồn tại không
     def isExists(self):
         if Customer.objects.filter(email = self.email):

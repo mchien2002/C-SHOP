@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from tabnanny import check
 from django.contrib import admin
 from django.urls import path
 from .views.home import Index, store
@@ -22,6 +23,7 @@ from .views.cart import Cart
 from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .middlewares.auth import auth_middleware
+from .views.roomchat import checkview, room, send, getMessages
 
 
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
@@ -35,8 +37,11 @@ urlpatterns = [
     # CHIEN: as_view()phương thức lớp trả về một hàm có thể được gọi khi một yêu cầu đến cho một URL khớp với mẫu được liên kết.
     path('login', Login.as_view(),name='login'),
     path('logout',logout,name='logout'),
-    path('cart',Cart.as_view(),name='cart'),
+    path('cart', Cart.as_view(),name='cart'),
     path('check-out', CheckOut.as_view() , name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
-
+    path('<str:room>/', room, name='room'),
+    path('checkview', checkview, name='checkview'),
+    path('send', send, name='send'),
+    path('getMessages/<str:room>/', getMessages, name='getMessages'),
 ]
