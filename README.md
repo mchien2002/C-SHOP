@@ -105,3 +105,4 @@ Fix bug order
 Button remove order
 Hash message code
 Chat online
+Add size for product
