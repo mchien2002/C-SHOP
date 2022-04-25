@@ -106,3 +106,6 @@ Button remove order
 Hash message code
 Chat online
 Add size for product
+
+25/4/2022: HOANG
+Add login,signup button 
