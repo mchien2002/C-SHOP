@@ -24,7 +24,7 @@ from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .middlewares.auth import auth_middleware
 from .views.roomchat import checkview, room, send, getMessages
-
+from .views.search import search
 
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
@@ -44,4 +44,5 @@ urlpatterns = [
     path('checkview', checkview, name='checkview'),
     path('send', send, name='send'),
     path('getMessages/<str:room>/', getMessages, name='getMessages'),
+    path('search',search,name='search'),
 ]

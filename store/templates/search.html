@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+<body>
 {% block content %}
 
 {% load cart %}
@@ -35,8 +36,7 @@
 	  <span class="sr-only">Next</span>
 	</a>
 </div>
-
-<div class="container-fluid mt-3 px-4 px-lg-5">	
+<div class="container-fluid mt-3 px-4 px-lg-5">
 	<div class="row">
 		<!-- filter -->
 
@@ -57,9 +57,7 @@
 				{% endfor %}
 			</div>
 		</div>
-
-		<!-- all products -->
-		<div id='products' class="col-lg-10 mx-auto">
+      <div id='products' class="col-lg-10 mx-auto">
 			<div class="row mx-auto">
 				{% for product in products %}
 				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
@@ -92,7 +90,7 @@
 							<input hidden type="text" name='product' value='{{product.id}}'>
 							{% if request.session.customer %}
 								<input type="submit" class="float-right btn btn-light  form-control"value="Add To Cart">
-							{% endif %}	
+							{% endif %}
 						</form>
 						{% endif %}
 
@@ -105,6 +103,8 @@
 	</div>
 </div>
 
+    </div>
+</div>
 
-
+</body>
 {% endblock %}

@@ -39,3 +39,10 @@ class Product(models.Model):
             return Product.objects.filter(category=category_id)
         else:
             return  Product.get_all_products();
+
+    @staticmethod
+    def get_all_products_by_name(name):
+        if name:
+            return Product.objects.filter(name=name)
+        else:
+            return Product.get_all_products();

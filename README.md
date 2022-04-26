@@ -109,3 +109,6 @@ Add size for product
 
 25/4/2022: HOANG
 Add login,signup button 
+
+27/4/2022: NHUT
+Add search button
