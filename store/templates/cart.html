@@ -16,6 +16,7 @@
                     <th>Sno.</th>
                     <th>Image</th>
                     <th>Product</th>
+                    <th>Size</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
@@ -28,6 +29,7 @@
                     <td>{{forloop.counter}}</td>
                     <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
                     <td>{{product.name}}</td>
+                    <td>{{product.size}}</td>
                     <td>{{product.price|currency}}</td>
                     <td>{{product|cart_quantity:request.session.cart}}</td>
                     <td>{{product|price_total:request.session.cart|currency}}</td>

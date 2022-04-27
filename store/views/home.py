@@ -3,13 +3,16 @@ from store.models.product import Product
 from store.models.category import Category
 from django.views import View
 
+from store.models.size import Size
+
 
 # Create your views here.
 class Index(View):
 
     def post(self , request):
         product = request.POST.get('product')
-        remove = request.POST.get('remove')
+        size = request.POST.get('size')
+        remove = request.POST.get('remove') 
         cart = request.session.get('cart')
         if cart:
             quantity = cart.get(product)
@@ -29,13 +32,12 @@ class Index(View):
             cart[product] = 1
 
         request.session['cart'] = cart
-        print('cart' , request.session['cart'])
+        print(size)
         return redirect('homepage')
 
 
 
     def get(self , request):
-        # print()
         return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
 
 def store(request):
@@ -44,6 +46,7 @@ def store(request):
         request.session['cart'] = {}
     products = None
     categories = Category.get_all_categories()
+    sizes = Size.get_all_size()
     categoryID = request.GET.get('category')
     if categoryID:
         products = Product.get_all_products_by_categoryid(categoryID)
@@ -53,6 +56,7 @@ def store(request):
     data = {}
     data['products'] = products
     data['categories'] = categories
+    data['sizes'] = sizes
 
     print('you are : ', request.session.get('email'))
     return render(request, 'index.html', data)
