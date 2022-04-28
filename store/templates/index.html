@@ -69,15 +69,20 @@
 						<p class="card-text"><b>{{product.price|currency}}</b></p>
 					</div>
 					<div class="card-body d-flex flex-wrap">
-						{% for size in sizes %}
-							<form action="/#{{size.name}}" class="form-check pr-2">
-								<input hidden type="text" name='size' value='{{size.name}}'>
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
-								<label class="form-check-label" for="flexRadioDefault1">
-									{{size.name}}
-								</label>
-							</form>
-						{% endfor %}
+							{% comment %} <form action='' class="form-check pr-2"> {% endcomment %}
+								<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
+								<input type="submit" class='btn btn-secondary' for='option1' value='S'>	
+
+								<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+								<input type="submit" class='btn btn-secondary' for='option2' value='S'>
+
+								<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+								<input type="submit" class='btn btn-secondary' for='option3' value='S'>
+
+								<input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+								<input type="submit" class='btn btn-secondary' for='option4' value='S'>
+
+ 							{% comment %} </form> {% endcomment %}
 					</div>
 
 
