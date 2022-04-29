@@ -9,29 +9,30 @@ from django.views import View
 class Index(View):
 
     def post(self , request):
-        product = request.POST.get('product')
+        id_product = request.POST.get('product')
+        product = Product.objects.get(id = id_product)
         size = request.POST.get('size')
+        product.size = size
+        product.save()
         remove = request.POST.get('remove') 
         cart = request.session.get('cart')
         if cart:
-            quantity = cart.get(product)
+            quantity = cart.get(id_product)
             if quantity:
                 if remove:
                     if quantity<=1:
-                        cart.pop(product)
+                        cart.pop(id_product)
                     else:
-                        cart[product]  = quantity-1
+                        cart[id_product]  = quantity-1
                 else:
-                    cart[product]  = quantity+1
+                    cart[id_product]  = quantity+1
 
             else:
-                cart[product] = 1
+                cart[id_product] = 1
         else:
             cart = {}
-            cart[product] = 1
-
+            cart[id_product] = 1
         request.session['cart'] = cart
-        print(size)
         return redirect('homepage')
 
 

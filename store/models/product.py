@@ -45,3 +45,6 @@ class Product(models.Model):
             return Product.objects.filter(name=name)
         else:
             return Product.get_all_products();
+    @staticmethod
+    def get_product_by_id(id):
+        return Product.objects.filter(id=id)

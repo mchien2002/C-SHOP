@@ -90,16 +90,16 @@
 						<form action="/#{{product.id}}" method="POST" class="btn-block">
 							{% csrf_token %}
 							<div class="card-body d-flex justify-content-between">
-								<input type="radio" class="btn-check" name="options" id="{{product.id}}1" autocomplete="off">
+								<input type="radio" class="btn-check" name='size' id="{{product.id}}1" autocomplete="off" value='S'>
 								<label class="btn btn-secondary" for="{{product.id}}1">S</label>
 
-								<input type="radio" class="btn-check" name="options" id="{{product.id}}2" autocomplete="off">
+								<input type="radio" class="btn-check" name='size' id="{{product.id}}2" autocomplete="off" value='M'>
 								<label class="btn btn-secondary" for="{{product.id}}2">M</label>
 
-								<input type="radio" class="btn-check" name="options" id="{{product.id}}3" autocomplete="off">
+								<input type="radio" class="btn-check" name='size' id="{{product.id}}3" autocomplete="off" value='L'>
 								<label class="btn btn-secondary" for="{{product.id}}3">L</label>
 
-								<input type="radio" class="btn-check" name="options" id="{{product.id}}4" autocomplete="off">
+								<input type="radio" class="btn-check" name='size' id="{{product.id}}4" autocomplete="off" value='XL'>
 								<label class="btn btn-secondary" for="{{product.id}}4">XL</label>	
 
 							</div>
