@@ -7,3 +7,12 @@
 .container-fluid{
     padding-top: 66px;
 }
+
+label.btn.btn-secondary{
+    width: 40px;
+    padding: 6px 6px;
+}
+
+.card-body.d-flex.justify-content-between{
+    background-color: white;
+}

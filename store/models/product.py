@@ -3,7 +3,6 @@ from pyexpat import model
 from statistics import mode
 from django.db import models
 
-from store.models.size import Size
 from .category import Category
 from store.models import category
 # Create your models here.

@@ -3,7 +3,6 @@ from store.models.product import Product
 from store.models.category import Category
 from django.views import View
 
-from store.models.size import Size
 
 
 # Create your views here.
@@ -46,7 +45,6 @@ def store(request):
         request.session['cart'] = {}
     products = None
     categories = Category.get_all_categories()
-    sizes = Size.get_all_size()
     categoryID = request.GET.get('category')
     if categoryID:
         products = Product.get_all_products_by_categoryid(categoryID)
@@ -56,7 +54,6 @@ def store(request):
     data = {}
     data['products'] = products
     data['categories'] = categories
-    data['sizes'] = sizes
 
     print('you are : ', request.session.get('email'))
     return render(request, 'index.html', data)
