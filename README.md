@@ -112,3 +112,9 @@ Add login,signup button
 
 27/4/2022: NHUT
 Add search button
+
+---------------------------------------------------
+
+29/04/2022 - 1/5/2022: CHIEN
+Add size filed for product
+Create search filter

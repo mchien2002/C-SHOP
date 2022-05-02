@@ -12,10 +12,13 @@ class Index(View):
         id_product = request.POST.get('product')
         product = Product.objects.get(id = id_product)
         size = request.POST.get('size')
-        product.size = size
-        product.save()
+        
         remove = request.POST.get('remove') 
         cart = request.session.get('cart')
+        if size:
+            product.size = size
+        product.save()
+        
         if cart:
             quantity = cart.get(id_product)
             if quantity:
@@ -57,5 +60,7 @@ def store(request):
     data['categories'] = categories
 
     print('you are : ', request.session.get('email'))
+    
+
     return render(request, 'index.html', data)
 
