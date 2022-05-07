@@ -27,7 +27,7 @@ def cart_quantity(product, cart):
     for id in keys:
         if int(id) == product.id:
             return cart.get(id)
-    return 0;
+    return 0
 
 
 @register.filter(name='price_total')

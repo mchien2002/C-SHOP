@@ -14,6 +14,7 @@
                     <th>Sno.</th>
                     <th>Hình ảnh</th>
                     <th>Tên Sản Phẩm</th>
+                    <th>Size</th>
                     <th>Ngày đặt hàng - Địa chỉ</th>
                     <th>Giá</th>
                     <th>Số Lượng</th>
@@ -29,6 +30,7 @@
                     <td>{{forloop.counter}}</td>
                     <td><img style="height: 80px;" class="rounded-circle" src="{{order.product.image.url}}" alt=""></td>
                     <td>{{order.product.name}}</td>
+                    <td>{{order.product.size}}</td>
                     <td>
                         {{order.date}}
                         <br> {{order.address}}

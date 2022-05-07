@@ -25,7 +25,7 @@ from .views.orders import OrderView
 from .middlewares.auth import auth_middleware
 from .views.roomchat import checkview, room, send, getMessages
 from .views.search import search
-
+from .views.product_detail import ProductDetail
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),
@@ -40,9 +40,12 @@ urlpatterns = [
     path('cart', Cart.as_view(),name='cart'),
     path('check-out', CheckOut.as_view() , name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
+    path('product_detail',ProductDetail.as_view(), name='product_detail'),
     path('<str:room>/', room, name='room'),
     path('checkview', checkview, name='checkview'),
     path('send', send, name='send'),
     path('getMessages/<str:room>/', getMessages, name='getMessages'),
     path('search',search,name='search'),
+    
+    
 ]
