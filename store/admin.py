@@ -1,6 +1,8 @@
 from django.contrib import admin
 from sympy import Order
 
+from store.models.cart import Cart
+
 from .models.product import Product
 from .models.category import Category
 from .models.customer import Customer
@@ -31,3 +33,4 @@ admin.site.register(Order)
 
 admin.site.register(Room)
 admin.site.register(Message)
+admin.site.register(Cart)

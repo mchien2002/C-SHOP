@@ -19,7 +19,7 @@ from django.urls import path
 from .views.home import Index, store
 from .views.signup import Signup
 from .views.login import Login,logout
-from .views.cart import Cart
+from .views.cart import Cart, CartView
 from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .middlewares.auth import auth_middleware
@@ -37,7 +37,7 @@ urlpatterns = [
     # CHIEN: as_view()phương thức lớp trả về một hàm có thể được gọi khi một yêu cầu đến cho một URL khớp với mẫu được liên kết.
     path('login', Login.as_view(),name='login'),
     path('logout',logout,name='logout'),
-    path('cart', Cart.as_view(),name='cart'),
+    path('cart', CartView.as_view(),name='cart'),
     path('check-out', CheckOut.as_view() , name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
     path('product_detail',ProductDetail.as_view(), name='product_detail'),
