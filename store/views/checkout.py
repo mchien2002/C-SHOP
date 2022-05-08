@@ -6,6 +6,7 @@ from django.views import View
 
 from store.models.product import Product
 from store.models.orders import Order
+from store.models.product_detail import ProductDetail
 
 
 class CheckOut(View):
@@ -14,22 +15,21 @@ class CheckOut(View):
         phone = request.POST.get('phone')
         customer = request.session.get('customer')
         cart = request.session.get('cart')
-        products = Product.get_products_by_id(list(cart.keys()))
-        print(address, phone, customer, cart, products)
+        productDetails = ProductDetail.get_productDetails_by_id(list(cart.keys()))
+
         orders = Order.get_all_orders()
-        for product in products:
-            print(cart.get(str(product.id)))
+        for productDetail in productDetails:
             quantity_temp = 0
             for order in orders:
-                if product.id == order.product.id and order.status == False and order.address == address and product.size == order.product.size:
+                if productDetail.id == order.product_detail.id and order.status == False and order.address == address and productDetail.size == order.product_detail.size:
                     Order.objects.filter(id=order.id).delete()
                     quantity_temp += order.quantity
             order = Order(customer=Customer(id=customer),
-                          product=product,
-                          price=product.price,
+                          product_detail=productDetail,
+                          price=productDetail.product.price,
                           address=address,
                           phone=phone,
-                          quantity=cart.get(str(product.id)) + quantity_temp
+                          quantity=cart.get(str(productDetail.id)) + quantity_temp
                           )
             order.save()
         request.session['cart'] = {}

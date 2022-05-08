@@ -5,4 +5,4 @@ from .customer import Customer
 from .orders import Order
 from .room import Room
 from .message import Message
-from .cart import Cart
+from .product_detail import ProductDetail

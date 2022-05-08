@@ -1,17 +1,13 @@
 from django.views import View 
 from django.shortcuts import render, redirect
-from store.models import customer
-from store.models.cart import Cart
 from store.models.customer import Customer
 from django.contrib.auth.hashers import check_password, make_password
 from store.models.product import Product
+from store.models.product_detail import ProductDetail
 
 # CHIEN: Class base View
-class CartView(View):
+class Cart(View):
     def get(self, request):
-        customer = request.session.get('customer')
-        carts = Cart.get_carts_by_customer(customer)
-        total_price = 0
-        for cart in carts:
-            total_price += cart.price
-        return render(request, 'cart.html', {'carts': carts, 'total_price': total_price})
+        ids=list(request.session.get('cart').keys())
+        product_details=ProductDetail.get_productDetails_by_id((ids))
+        return render(request, 'cart.html', {'productDetails':product_details})

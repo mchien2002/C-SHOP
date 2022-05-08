@@ -19,13 +19,13 @@ from django.urls import path
 from .views.home import Index, store
 from .views.signup import Signup
 from .views.login import Login,logout
-from .views.cart import Cart, CartView
+from .views.cart import Cart
 from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .middlewares.auth import auth_middleware
 from .views.roomchat import checkview, room, send, getMessages
 from .views.search import search
-from .views.product_detail import ProductDetail
+from .views.product_detail import ProductDetailViews
 # CHIEN: Tạo đường dẫn URL để xử lý yêu cầu
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),
@@ -37,10 +37,10 @@ urlpatterns = [
     # CHIEN: as_view()phương thức lớp trả về một hàm có thể được gọi khi một yêu cầu đến cho một URL khớp với mẫu được liên kết.
     path('login', Login.as_view(),name='login'),
     path('logout',logout,name='logout'),
-    path('cart', CartView.as_view(),name='cart'),
+    path('cart', Cart.as_view(),name='cart'),
     path('check-out', CheckOut.as_view() , name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
-    path('product_detail',ProductDetail.as_view(), name='product_detail'),
+    path('product_detail',ProductDetailViews.as_view(), name='product_detail'),
     path('<str:room>/', room, name='room'),
     path('checkview', checkview, name='checkview'),
     path('send', send, name='send'),

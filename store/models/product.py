@@ -20,6 +20,7 @@ class Product(models.Model):
     # CHIEN: Tạo khóa ngoại category để xác định product này thuộc loại quần áo nào
     # CHIEN: on_delete = models.cascade: dữ liệu con sẽ bị xóa nếu dữ liệu trong bảng mẹ bị xáo
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='Unknown')
+    size = models.CharField(max_length=20, default='Ngẫu nhiên')
     # CHIEN: staticmethod không chịu ảnh hưởng bởi class, nó chỉ việc xử lý các tham số
 
     @staticmethod

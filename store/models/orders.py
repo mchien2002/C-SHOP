@@ -1,10 +1,12 @@
 from django.db import models
+
+from store.models.product_detail import ProductDetail
 from .product import Product
 from .customer import Customer
 import  datetime
 
 class Order(models.Model):
-    product = models.ForeignKey(Product , on_delete=models.CASCADE)
+    product_detail = models.ForeignKey(ProductDetail , on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer , on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     price = models.IntegerField()

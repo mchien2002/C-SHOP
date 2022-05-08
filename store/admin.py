@@ -1,7 +1,7 @@
 from django.contrib import admin
 from sympy import Order
 
-from store.models.cart import Cart
+from store.models.product_detail import ProductDetail
 
 from .models.product import Product
 from .models.category import Category
@@ -19,7 +19,8 @@ class AdminProduct(admin.ModelAdmin):
 # CHIEN: hiển thị thông tin của danh mục sản phẩm
 class AdminCategory(admin.ModelAdmin):
     list_display = ['name']
-
+class AdminProductDetail(admin.ModelAdmin):
+    list_display = ['product', 'size']
 # CHIEN: tạo site Product cho admin
 admin.site.register(Product, AdminProduct)
 
@@ -33,4 +34,4 @@ admin.site.register(Order)
 
 admin.site.register(Room)
 admin.site.register(Message)
-admin.site.register(Cart)
+admin.site.register(ProductDetail, AdminProductDetail)
