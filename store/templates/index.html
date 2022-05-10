@@ -7,6 +7,7 @@
 {% load static %}
 <!-- body -->
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 
 <div id="carouselExampleIndicators" class="carousel slide mb-auto" data-ride="carousel">
@@ -38,44 +39,34 @@
 
 <div class="container-fluid mt-3 px-4 px-lg-5">	
 	<div class="row">
-		<!-- filter -->
-
-		<div class="col-lg-2 mx-auto">
-			<form action="{% url 'search' %}" method="get">
-				{% csrf_token %}
-				<input type="'text" name="q" placeholder="Tìm kiếm sản phẩm">
-				<button type="submit">Tìm kiếm</button>
-        	</form>
-
-			<div class="list-group">
-
-				<a href="/" class="list-group-item list-group-item-action">All Products</a>
-
-				{% for category in categories %}
-					<a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>
-				{% endfor %}
-			</div>
-		</div>
-
+		
 		<!-- all products -->
 		<div id='products' class="col-lg-10 mx-auto">
-			<div class="row mx-auto">
+			<div class="row">
 				{% for product in products %}
-				<div class="card mx-auto mb-3" id="{{product.id}}" style="width: 18rem;">
-					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
-					<div class="card-body">
-						<p class="card-title">{{product.name}}</p>
-						<p class="card-text"><b>{{product.price|currency}}</b></p>
-					</div>
-
-					<div class="card-footer p-0 no-gutters">
-						<form action="/product_detail" method='GET'>
-							{% csrf_token %}
-							<input hidden type="text" name='product_id' value="{{product.id}}">
-							{% if request.session.customer %}
-								<input type="submit" class="float-right btn btn-light form-control"value="Thông tin sản phẩm">
-							{% endif %}	
-						</form>
+				<div class="col-md-3 col-sm-6 pb-4" id="{{product.id}}" style="width: 18rem;">
+					<div class="product-grid">
+						<div class="product-image">
+							<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" width="280" height="300">
+							<ul class="social">
+								<li>
+									<form action="/product_detail" method='GET'>
+										<input hidden type="text" name='product_id' value="{{product.id}}">
+										<button type="submit" class="btn-outline-light m-0 p-0 border-0">
+											<a href="" data-tip="Quick View" class="m-0 p-0"><i class="fa fa-shopping-cart"></i></a>
+										</button>
+									</form>
+								</li>
+							</ul>
+						</div>
+						<div class="product-content">
+							<h3 class="title"><a href="#">{{product.name}}</a></h3>
+							<div class="price">{{product.price|currency}}</div>
+							<form action="/product_detail" method='GET'>
+								<input hidden type="text" name='product_id' value="{{product.id}}">
+								<input type="submit" class="add-to-cart btn-outline-light m-0 p-0 border-0" name="" id="" value="+ Add To Cart">
+							</form>
+						</div>
 					</div>
 				</div>
 				{% endfor %}

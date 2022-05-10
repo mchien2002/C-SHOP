@@ -6,54 +6,77 @@
 {% load custom_filter %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
-<div class="container">
-   <div class="border rounded p-4 m-4">
-        <p class="display-4 pl-4 ml-4">Your Cart</p>
-        <hr>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Sno.</th>
-                    <th>Image</th>
-                    <th>Product</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                {% for productDetail in productDetails %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td><img style="height: 80px;" class="rounded-circle" src="{{productDetail.product.image.url}}" alt=""></td>
-                    <td>{{productDetail.product.name}}</td>
-                    <td>{{productDetail.size}}</td>
-                    <td>{{productDetail.product.price|currency}}</td>
-                    <td>{{productDetail|cart_quantity:request.session.cart}}</td>
-                    <td>{{productDetail|price_total:request.session.cart|currency}}</td> 
-                </tr>
+<div class="cart_section">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-10 offset-lg-1">
+              <div class="cart_container">
+                  <div class="cart_title">DỎ HÀNG<small></small></div>
+                  <div class="cart_items">
+                      <ul class="cart_list">
+                          <li class="cart_item clearfix">
+                              <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                  <div class="cart_item_name cart_info_col">
+                                      <div class="cart_item_title">Ảnh</div>
+                                  </div>
+                                  <div class="cart_item_name cart_info_col">
+                                      <div class="cart_item_title">Tên SP</div>
+                                  </div>
+                                  <div class="cart_item_color cart_info_col">
+                                      <div class="cart_item_title">Size</div>
+                                  </div>
+                                  <div class="cart_item_quantity cart_info_col">
+                                      <div class="cart_item_title">Số Lượng</div>
+                                  </div>
+                                  <div class="cart_item_price cart_info_col">
+                                      <div class="cart_item_title">Giá/SP</div>
+                                  </div>
+                                  <div class="cart_item_total cart_info_col">
+                                      <div class="cart_item_title">Đơn giá</div>
+                                  </div>
+                              </div>
+                          </li>
+                          {% for productDetail in productDetails %}
+                          <li class="cart_item clearfix">
+                            <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                            <div class=""><img style="height: 150px;" src="{{productDetail.product.image.url}}" alt=""></div>
 
-                {% endfor %}
-               
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <th colspan="4"></th>
-                    <th class="" colspan="">Total</th>
-                    <th>{{productDetails|total_cart_price:request.session.cart|currency}}</th>
-                </tr>
-            </tfoot>
-        </table>
-        <hr>
-        <div class="m-3 p-3">
-            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded col-lg-3 float-right">Check out</a>
-        </div>
-   </div>
+                                <div class="cart_item_name cart_info_col">
+                                    <div class="cart_item_text">{{productDetail.product.name}}</div>
+                                </div>
+                                <div class="cart_item_color cart_info_col">
+                                    <div class="cart_item_text">{{productDetail.size}}</div>
+                                </div>
+                                <div class="cart_item_quantity cart_info_col">
+                                    <div class="cart_item_text">{{productDetail|cart_quantity:request.session.cart}}</div>
+                                </div>
+                                <div class="cart_item_price cart_info_col">
+                                    <div class="cart_item_text">{{productDetail.product.price|currency}}</div>
+                                </div>
+                                <div class="cart_item_total cart_info_col">
+                                    <div class="cart_item_text">{{productDetail|price_total:request.session.cart|currency}}</div>
+                                </div>
+                            </div>
+                        </li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+                  <div class="order_total">
+                      <div class="order_total_content text-md-right">
+                          <div class="order_total_title">Order Total:</div>
+                          <div class="order_total_amount">{{productDetails|total_cart_price:request.session.cart|currency}}</div>
+                      </div>
+                  </div>
+                  <div class="cart_buttons"> 
+                    <a href="/store">
+                      <button type="button" class="button cart_button_clear">Tiếp tục mua</button>
+                    </a>
+                    <button data-toggle="modal" data-target="#exampleModal" class="button cart_button_checkout">Thanh toán</button> </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
-
 
 <!-- modal -->
 

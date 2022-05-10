@@ -42,15 +42,31 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/store">Store <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/store">Trang chủ <span class="sr-only">(current)</span></a>
           </li>
-
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"> Danh mục </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a href="/" class="dropdown-item">All Products</a></li>
+              {% for category in categories %}
+                <li><a href="/?category={{category.id}}" class="dropdown-item">{{category.name}}</a></li>
+              {% endfor %}
+          </ul>
+          </li>
         </ul>
 
 
         <ul class=" navbar-nav my-2 my-lg-0">
 
           {% if request.session.customer %}
+          <li class="nav-item mr-2">
+            <form action="{% url 'search' %}" method="get" class="form-inline mt-2 mt-md-0">
+              {% csrf_token %}
+              <input class="form-control mr-sm-2" type="text" name="q" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </li>
+
           <li class="nav-item ">
             <a class="btn btn-outline-dark" href="/cart"><i class="bi bi-cart-check-fill"></i>
               <span class="badge badge-info bg-black">{{request.session.cart.keys|length}}</span>

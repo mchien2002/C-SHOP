@@ -4,64 +4,70 @@
 {% block content %}
 {% load cart %}
 {% load custom_filter %}
-<div class="container">
-   <div class="border rounded p-4 m-4">
-        <p class="display-4 pl-4 ml-4">Your Orders</p>
-        <hr>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Sno.</th>
-                    <th>Hình ảnh</th>
-                    <th>Tên Sản Phẩm</th>
-                    <th>Size</th>
-                    <th>Ngày đặt - Địa chỉ</th>
-                    <th>Giá</th>
-                    <th>Số Lượng</th>
-                    <th>Đơn Giá</th>
-                    <th>Trạng thái</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+<div class="cart_section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cart_container">
+                    <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
+                    <div class="cart_items">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart_item_title"></th>
+                                    <th class="cart_item_title">Tên Sản Phẩm</th>
+                                    <th class="cart_item_title">Size</th>
+                                    <th class="cart_item_title">Ngày đặt - Địa chỉ</th>
+                                    <th class="cart_item_title">Giá</th>
+                                    <th class="cart_item_title">Số Lượng</th>
+                                    <th class="cart_item_title">Đơn Giá</th>
+                                    <th class="cart_item_title">Trạng thái</th>
+                                    <th class="cart_item_title"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% for order in orders %}
+                                <tr>
+                                    <td class="cart_item_text"><img style="height: 80px;" class="rounded-circle" src="{{order.product_detail.product.image.url}}" alt=""></td>
+                                    <td class="cart_item_text">{{order.product_detail.product.name}}</td>
+                                    <td class="cart_item_text">{{order.product_detail.size}}</td>
+                                    <td class="cart_item_text">
+                                        {{order.date}}
+                                        <br> {{order.address}}
+                                    </td>
+                                    <td class="cart_item_text">{{order.price|currency}}</td>
+                                    <td class="cart_item_text">{{order.quantity}}</td>
+                                    <td class="cart_item_text">{{order.quantity|multiply:order.price|currency}}</td>
+                                    {% if order.status %}
+                                    <td class="cart_item_text"><small class="badge badge-success">Đã nhận hàng</small></td>
+                                    {% else %}
+                                    <td class="cart_item_text"><small class="badge badge-warning">Đang giao hàng</small></td>
+                                    {% endif %}
+                                    <td class="cart_item_text">
+                                        <form action="/orders" method="post">
+                                            {% csrf_token %}
+                                            <input hidden type="text" name='remove' value='{{order.id}}'>
+                                            <input type="submit" value="Hủy đơn này" class="btn bg-danger text-white">
+                                        </form>
+                                    </td>
+                                </tr>
                 
-                {% for order in orders %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td><img style="height: 80px;" class="rounded-circle" src="{{order.product_detail.product.image.url}}" alt=""></td>
-                    <td>{{order.product_detail.product.name}}</td>
-                    <td>{{order.product_detail.size}}</td>
-                    <td>
-                        {{order.date}}
-                        <br> {{order.address}}
-                    </td>
-                    <td>{{order.price|currency}}</td>
-                    <td>{{order.quantity}}</td>
-                    <td>{{order.quantity|multiply:order.price|currency}}</td>
-                    {% if order.status %}
-                    <td><small class="badge badge-success">Đã nhận hàng</small></td>
-                    {% else %}
-                    <td><small class="badge badge-warning">Đang giao hàng</small></td>
-                    {% endif %}
-                    <td>
-                        <form action="/orders" method="post">
-                            {% csrf_token %}
-                            <input hidden type="text" name='remove' value='{{order.id}}'>
-                            <input type="submit" value="Hủy đơn này" class="btn bg-danger text-white">
-                        </form>
-                    </td>
-                </tr>
-
-                {% endfor %}
-               
-            </tbody>
-
-
-        </table>
-
-
-   </div>
+                                {% endfor %}
+                               
+                            </tbody>
+                
+                
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 
 

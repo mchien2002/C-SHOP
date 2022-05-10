@@ -24,7 +24,8 @@ class ProductDetailViews(View):
             product = product,
             size = size
         )
-
+        if quantity == '':
+            quantity = 1
         if ProductDetail.isExist(productDetail) == False:
             productDetail.save()
         else:
