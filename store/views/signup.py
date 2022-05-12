@@ -45,7 +45,7 @@ class Signup(View):
         else:
             data = {
                 'error': error_message,
-                'values': value
+                'values': value 
             }
             return render(request, 'signup.html', data)
 

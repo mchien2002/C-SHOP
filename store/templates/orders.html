@@ -19,6 +19,7 @@
                                     <th class="cart_item_title"></th>
                                     <th class="cart_item_title">Tên Sản Phẩm</th>
                                     <th class="cart_item_title">Size</th>
+                                    <th class="cart_item_title">Màu</th>
                                     <th class="cart_item_title">Ngày đặt - Địa chỉ</th>
                                     <th class="cart_item_title">Giá</th>
                                     <th class="cart_item_title">Số Lượng</th>
@@ -34,6 +35,9 @@
                                     <td class="cart_item_text"><img style="height: 80px;" class="rounded-circle" src="{{order.product_detail.product.image.url}}" alt=""></td>
                                     <td class="cart_item_text">{{order.product_detail.product.name}}</td>
                                     <td class="cart_item_text">{{order.product_detail.size}}</td>
+                                    <td>
+                                        <div class="color m-0" style="background-color: {{order.product_detail.color}}; margin-top: 27px;" data-hex="{{productDetail.color}}"></div>
+                                    </td>
                                     <td class="cart_item_text">
                                         {{order.date}}
                                         <br> {{order.address}}

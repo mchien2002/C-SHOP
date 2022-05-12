@@ -22,6 +22,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='Unknown')
     size = models.CharField(max_length=20, default='Ngẫu nhiên')
     # CHIEN: staticmethod không chịu ảnh hưởng bởi class, nó chỉ việc xử lý các tham số
+    description = models.CharField(max_length=10000)
 
     @staticmethod
     def get_products_by_id(ids):

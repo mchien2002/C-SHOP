@@ -21,7 +21,7 @@ class CheckOut(View):
         for productDetail in productDetails:
             quantity_temp = 0
             for order in orders:
-                if productDetail.id == order.product_detail.id and order.status == False and order.address == address and productDetail.size == order.product_detail.size:
+                if productDetail.id == order.product_detail.id and order.status == False and order.address == address and productDetail.size == order.product_detail.size and productDetail.color == order.product_detail.color:
                     Order.objects.filter(id=order.id).delete()
                     quantity_temp += order.quantity
             order = Order(customer=Customer(id=customer),

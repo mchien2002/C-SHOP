@@ -11294,3 +11294,20 @@ textarea.form-control-lg {
   right: 0;
   left: 0;
 }
+.colors {
+  display: flex;
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 3;
+}
+
+.color {
+  height: 36px;
+  width: 36px;
+  margin-left: 0.5em;
+  border-radius: 18px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #aaa;
+  cursor: pointer;
+}

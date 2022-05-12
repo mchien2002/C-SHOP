@@ -25,6 +25,9 @@
                                   <div class="cart_item_color cart_info_col">
                                       <div class="cart_item_title">Size</div>
                                   </div>
+                                  <div class="cart_item_color cart_info_col">
+                                      <div class="cart_item_title">Màu</div>
+                                  </div>
                                   <div class="cart_item_quantity cart_info_col">
                                       <div class="cart_item_title">Số Lượng</div>
                                   </div>
@@ -46,6 +49,9 @@
                                 </div>
                                 <div class="cart_item_color cart_info_col">
                                     <div class="cart_item_text">{{productDetail.size}}</div>
+                                </div>
+                                <div class="cart_item_color cart_info_col">
+                                  <div class="color" style="background-color: {{productDetail.color}}; margin-top: 27px;" data-hex="{{productDetail.color}}"></div>
                                 </div>
                                 <div class="cart_item_quantity cart_info_col">
                                     <div class="cart_item_text">{{productDetail|cart_quantity:request.session.cart}}</div>

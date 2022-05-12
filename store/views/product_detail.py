@@ -19,26 +19,47 @@ class ProductDetailViews(View):
         size = request.POST.get('product_size')
         quantity = request.POST.get('quantity')
         cart = request.session.get('cart')
+        color = request.POST.get('product_color')
+        error_message = self.validateProductDetail(size, color)
+        print(color)
+        if not error_message:
+            productDetail = ProductDetail(
+                product = product,
+                size = size,
+                color = color
+            )
 
-        productDetail = ProductDetail(
-            product = product,
-            size = size
-        )
-        if quantity == '':
-            quantity = 1
-        if ProductDetail.isExist(productDetail) == False:
-            productDetail.save()
-        else:
-            productDetail = ProductDetail.get_productDetail_by_product_and_size(product, size)
-        if cart:
-            quantity_in_cart = cart.get(str(productDetail.id))
-            if quantity_in_cart:
-                cart[productDetail.id]  = quantity_in_cart + int(quantity)
+            if quantity == '':
+                quantity = 1
+            if ProductDetail.isExist(productDetail) == False:
+                productDetail.save()
             else:
-                cart[productDetail.id] = int(quantity)
+                productDetail = ProductDetail.get_productDetail_by_product_and_size(product, size, color)
+            if cart:
+                quantity_in_cart = cart.get(str(productDetail.id))
+                if quantity_in_cart:
+                    cart[productDetail.id]  = quantity_in_cart + int(quantity)
+                else:
+                    cart[productDetail.id] = int(quantity)
+            else:
+                cart = {}
+                cart[productDetail.id] = 1
+            request.session['cart'] = cart
+            return redirect('cart')
         else:
-            cart = {}
-            cart[productDetail.id] = 1
-        request.session['cart'] = cart
-        
-        return redirect('cart')
+            data = {
+                'error': error_message,
+                'product': product 
+            }
+            return render(request, 'product_detail.html', data)
+
+    def validateProductDetail(self, size, color):
+        error_message = None
+        if size == None and color == None:
+            error_message = "Hãy chọn size và màu cho sản phẩm"
+        elif size == None:
+            error_message = "Hãy chọn size cho sản phẩm"
+        elif color == None:
+            error_message = "Hãy chọn màu cho sản phẩm"
+
+        return error_message
