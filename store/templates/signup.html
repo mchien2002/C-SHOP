@@ -4,81 +4,64 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 <div class="container">
-    <div class="p-4 m-4">
-        <div class="col-lg-5 mx-auto border rounded pt-4 p-3">
-            <h3 class="alert alert-light border rounded">Create An Acount</h3>
-            <form action="/signup" method="POST">
-
-                <!-- Cross Site Request Forgery -->
-                {% csrf_token %}
-                
-                {% if error%}
-                <div class="alert alert-danger" role="alert">
-                    {{error}}
-                </div>
-                {%endif%}
-                <!-- firstname -->
-                <div class="form-group">
-                    <label for="">First Name</label>
-                    <input type="text" name="firstname"
-                    id="" value="{{values.first_name}}" class="form-control form-control-sm"
-                    placeholder="">
-                </div>
-
-                    <!-- LastName -->
-                <div class="form-group">
-                    <label for="">Last Name</label>
-                    <input type="text"
-                    class="form-control form-control-sm" 
-                    name="lastname" id="" value="{{values.last_name}}"
-                    >
-                </div>
-
-                    <!-- phone -->
-                <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text"
-                    class="form-control form-control-sm" 
-                    name="phone" id="" value="{{values.phone}}"
-                    placeholder="+84********">
-                </div>                
-
-                <!-- email -->
-                <div class="form-group">
-                    <label for="">Email</label>
-                    <input required type="email"
-                    class=" form-control-sm form-control " 
-                    name="email" id="" value="{{values.email}}"
-                     placeholder="example@gmail.com">
-                </div>
-                
-                    <!-- password -->
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password"
-                    class="form-control form-control-sm" 
-                    name="password" id=""
-                     placeholder="********">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Nhập lại Password</label>
-                    <input type="password"
-                    class="form-control form-control-sm" 
-                    name="password_check" id=""
-                     placeholder="********">
-                </div>
-                   
-                <br>
-                <div class="form-group">
-                    <input class="btn btn-sm btn-info" type="submit" value="Create An Acount">
-                </div>
-                <a href="/login" class="csw-btn-button" rel="nofollow" target="_blank" >Đã có tài khoản, đăng nhập tại đây</a>
-            </form>
-        </div>
-    </div>
+	<form action="/signup" method="POST">
+        {% csrf_token %}
+        
+		<div class="row justify-content-md-center">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				<div class="login-screen">
+					<div class="login-box">
+                        <h3 class="alert alert-light border rounded">Create An Acount</h3>
+						<div class="row gutters">
+                            {% if error%}
+                                <div class="alert alert-danger" role="alert">
+                                    {{error}}
+                                </div>
+                            {%endif%}
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input type="text" class="form-control" name="firstname" id="" value="{{values.first_name}}" placeholder="First Name">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input type="text" class="form-control" name="lastname" id="" value="{{values.last_name}}" placeholder="Last Name">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input type="text" class="form-control" name="phone" id="" value="{{values.phone}}" placeholder="+84********">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input required type="email" class="form-control "  name="email" id="" value="{{values.email}}"  placeholder="example@gmail.com">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" id="" placeholder="Password">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<input type="password" class="form-control" name="password_check" id="" placeholder="Nhập lại Password">
+								</div>
+							</div>
+						</div>
+						<div class="actions clearfix">
+							<button type="submit" class="btn btn-primary btn-block">Signup</button>
+						</div>
+						
+						<a href="/login" class="additional-link"><span>Login Now</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
 
 {% endblock %}
