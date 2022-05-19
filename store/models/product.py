@@ -12,7 +12,6 @@ class Product(models.Model):
     # CHIEN: giá sp
     price = models.IntegerField(default=0)
     # CHIEN: mô tả sp
-    description = models.CharField(max_length=200, default=0)
     # CHIEN: thương hiệu của sản phẩm
     thuonghieu = models.CharField(max_length=50, default='Unknown')
     # CHIEN: ảnh minh họa sp
@@ -38,7 +37,7 @@ class Product(models.Model):
         if category_id:
             return Product.objects.filter(category=category_id)
         else:
-            return  Product.get_all_products();
+            return  Product.get_all_products()
 
     @staticmethod
     def get_all_products_by_name(name):

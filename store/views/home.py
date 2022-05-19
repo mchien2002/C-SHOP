@@ -15,6 +15,7 @@ class Index(View):
 
 def store(request):
     cart = request.session.get('cart')
+
     if not cart:
         request.session['cart'] = {}
     products = None
@@ -23,14 +24,11 @@ def store(request):
     if categoryID:
         products = Product.get_all_products_by_categoryid(categoryID)
     else:
-        products = Product.get_all_products();
+        products = Product.get_all_products()
 
     data = {}
     data['products'] = products
-    data['categories'] = categories
-
-    print('you are : ', request.session.get('email'))
-    
+    data['categories'] = categories    
 
     return render(request, 'index.html', data)
 

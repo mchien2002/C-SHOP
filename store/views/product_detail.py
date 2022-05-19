@@ -18,10 +18,11 @@ class ProductDetailViews(View):
         product = Product.objects.get(id = product_id)
         size = request.POST.get('product_size')
         quantity = request.POST.get('quantity')
-        cart = request.session.get('cart')
         color = request.POST.get('product_color')
+
+        cart = request.session.get('cart')
         error_message = self.validateProductDetail(size, color)
-        print(color)
+        
         if not error_message:
             productDetail = ProductDetail(
                 product = product,
@@ -43,7 +44,7 @@ class ProductDetailViews(View):
                     cart[productDetail.id] = int(quantity)
             else:
                 cart = {}
-                cart[productDetail.id] = 1
+                cart[productDetail.id] = int(quantity)
             request.session['cart'] = cart
             return redirect('cart')
         else:

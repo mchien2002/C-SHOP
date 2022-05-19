@@ -10,6 +10,7 @@ from store.models.product_detail import ProductDetail
 
 
 class CheckOut(View):
+
     def post(self, request):
         address = request.POST.get('address')
         phone = request.POST.get('phone')
@@ -18,6 +19,7 @@ class CheckOut(View):
         productDetails = ProductDetail.get_productDetails_by_id(list(cart.keys()))
 
         orders = Order.get_all_orders()
+        
         for productDetail in productDetails:
             quantity_temp = 0
             for order in orders:
