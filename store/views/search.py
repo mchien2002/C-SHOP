@@ -8,12 +8,14 @@ from django.views import View
 
 def search(request):
     products = None
+    
     categories = Category.get_all_categories()
-    search = request.GET.get('q')
+    search = request.GET.get('search')
 
     if search:
         products = Product.objects.filter(name__icontains = search)
     
+
     data = {}
     data['products'] = products
     data['categories'] = categories

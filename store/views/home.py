@@ -29,7 +29,6 @@ def store(request):
     data = {}
     data['products'] = products
     data['categories'] = categories    
-
     return render(request, 'index.html', data)
 
 
