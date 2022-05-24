@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.hashers import check_password
-from store.models.category import Category
 from store.models.customer import Customer
 from django.views import View
 
@@ -14,9 +13,8 @@ class OrderView(View):
     def get(self , request ):
         customer = request.session.get('customer')
         orders = Order.get_orders_by_customer(customer)
-        categories = Category.get_all_categories()
-        return render(request, 'orders.html' ,{'orders' : orders, 'categories': categories})
-        
+        print(orders)
+        return render(request, 'orders.html' ,{'orders' : orders})
     def post(self, request):
         order = request.POST.get('remove')
         Order.objects.filter(id = order).delete()
