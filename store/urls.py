@@ -30,7 +30,7 @@ from .views.product_detail import ProductDetailViews
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),
     path('signup' , Signup.as_view()),
-    path('store', store , name='store'),
+    path('store', store, name='store'),
 
 
     #HOANG: thêm đường dẫn login

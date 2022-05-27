@@ -48,3 +48,13 @@ class Product(models.Model):
     @staticmethod
     def get_product_by_id(id):
         return Product.objects.filter(id=id)
+
+    @staticmethod
+    def get_product_by_price(min, max):
+        products = Product.get_all_products()
+        list_product = []
+        for product in products:
+            if min <= product.price <= max:
+                list_product.append(product)
+        
+        return list_product

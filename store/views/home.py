@@ -30,6 +30,22 @@ def store(request):
     data['products'] = products
     data['categories'] = categories    
 
+    if request.method == 'POST':
+        min_price = request.POST.get('min_price')
+        max_price = request.POST.get('max_price')
+        if min_price == '':
+            min_price = 1
+        if max_price == '':
+            max_price = 1
+        categories = Category.get_all_categories()
+
+          
+        products = Product.get_product_by_price(int(min_price), int(max_price))
+        data = {}
+        data['products'] = products
+        data['categories'] = categories  
+        return render(request, 'index.html', data)
+
     return render(request, 'index.html', data)
 
 
